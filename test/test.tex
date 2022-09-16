@@ -1,11 +1,31 @@
 \documentclass{article}
 \usepackage[utf8]{inputenc}
+\usepackage[a4paper, margin=1in]{geometry}
+\usepackage{listings}
+\usepackage{parcolumns}
 \usepackage{../src/sll}
 
 \title{sll}
 \author{Daniele}
 \date{13th September, 2022}
 
+
+
+\NewDocumentCommand\code{m}{
+    \noindent
+    \begin{minipage}{.45\textwidth}
+        \lstinputlisting[breaklines, frame=tlrb]{#1}
+    \end{minipage}\hfill
+    \begin{minipage}{.45\textwidth}
+        \input{#1}
+    \end{minipage}\hfill
+}
+
+
+
 \begin{document}
     \maketitle
+
+    \code{./srcs/parenthesise.tex}
+
 \end{document}

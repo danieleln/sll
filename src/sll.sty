@@ -1,2 +1,42 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{sll}[2022/09/13 Scientific Latex Library]
+
+%%% Packages %%%
+\RequirePackage{xparse}
+\RequirePackage{amsmath}
+\RequirePackage{bm}
+
+
+%%% General Math %%%
+
+% \parenthesise
+%
+% Purpose:
+%   this command automatically resizes parenthesis surrunding the argument
+%
+% Usage:
+%   \parenthesise(\frac12)
+%   \parenthesise[\frac12]
+\NewDocumentCommand\parenthesise{d() d[] d\{\} d|| d\|\| d<> e{_^}}{ %
+    { %
+        \IfValueTF{#1}{\left(#1\right)}{ %
+            \IfValueTF{#2}{\left[#2\right]}{ %
+                \IfValueTF{#3}{\left\{#3\right\}}{ %
+                    \IfValueTF{#4}{\left|#4\right|}{ %
+                        \IfValueTF{#5}{\left\|#5\right\|}{ %
+                            \IfValueT{#6}{\left\langle#6\right\rangle} %
+                        } %
+                    } %
+                } %
+            } %
+        } %
+        \IfValueT{#7}{_{#7}} %
+        \IfValueT{#8}{^{#8}} %
+    } %
+}
+
+
+\NewDocumentCommand\parenthesize{}{\parenthesise}
+\NewDocumentCommand\p{}{\parenthesise}
+
+
