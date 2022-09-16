@@ -17,7 +17,7 @@
 % Usage:
 %   \parenthesise(\frac12)
 %   \parenthesise[\frac12]
-\NewDocumentCommand\parenthesise{d() d[] d\{\} d|| d\|\| d<> e{_^}}{ %
+\NewDocumentCommand\parenthesise { d() d[] d\{\} d|| d\|\| d<> e{_^} } { %
     { %
         \IfValueTF{#1}{\left(#1\right)}{ %
             \IfValueTF{#2}{\left[#2\right]}{ %
@@ -36,7 +36,11 @@
 }
 
 
-\NewDocumentCommand\parenthesize{}{\parenthesise}
-\NewDocumentCommand\p{}{\parenthesise}
+% short hands
+\NewDocumentCommand\parenthesize { } { \parenthesise }
+\NewDocumentCommand\p            { } { \parenthesise }
 
 
+% absolute value & norm
+\NewDocumentCommand\abs  { m } { \parenthesise|#1|   }
+\NewDocumentCommand\norm { m } { \parenthesise\|#1\| }
