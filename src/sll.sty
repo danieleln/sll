@@ -2,8 +2,8 @@
 \ProvidesPackage{sll}[2022/09/13 Scientific Latex Library]
 
 %%% Packages %%%
+\RequirePackage{amsmath, amssymb}
 \RequirePackage{xparse}
-\RequirePackage{amsmath}
 \RequirePackage{bm}
 
 
@@ -44,3 +44,14 @@
 % absolute value & norm
 \NewDocumentCommand\abs  { m } { \parenthesise|#1|   }
 \NewDocumentCommand\norm { m } { \parenthesise\|#1\| }
+
+
+% operators
+\let\division\div
+
+\NewDocumentCommand\grad  { } { \nabla\p }
+\RenewDocumentCommand\div { } { \nabla\cdot\p }
+\NewDocumentCommand\curl  { } { \nabla\times\p }
+
+% fractions
+\NewDocumentCommand\fracplaceholder { } { \frac\square\square }
